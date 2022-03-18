@@ -1,0 +1,65 @@
+#include <iostream>
+#include <ctime>
+#include <string>
+#include <vector>
+#include <algorithm>
+#include <array>
+#include <iomanip>
+#include <fstream>
+#define mno(a, b) a * b;
+using namespace std;
+
+ifstream file;
+
+class ZOO
+{
+private:
+    string animal, gender, name;
+    int price, count;
+public:
+    ZOO(string setAnimal, string setGender, string setName, int setPrice, int setCount) : animal(setAnimal), gender(setGender), name(setName), price(setPrice), count(setCount)
+    {
+        cout << "Construct...\n" << endl;
+    }
+    ~ZOO()
+    {
+        
+        cout << "\nDestruct..." << endl;
+    }
+    void fillFile()
+    {
+        
+        file.open("d:\\Users\\Nikita\\Desktop\\result.txt");
+        if (file.is_open())
+            cout << "File open..." << endl;
+        else
+        {
+            cout << "Error...";
+        }
+        ofstream file("d:\\Users\\Nikita\\Desktop\\result.txt", ios_base::app);
+
+        file << "Animal: " << animal << endl;
+        file << "Gender : " << gender << endl;
+        file << "Name : " << name << endl;
+        file << "Price : " << price << endl;
+        file << "Count : " << count << endl;
+
+        file.close();
+
+    }
+    void textGet()
+    {
+        cout << "Animal: " << animal << endl;
+        cout << "Gender : " << gender << endl;
+        cout << "Name : " << name << endl;
+        cout << "Price : " << price << endl;
+        cout << "Count : " << count << endl;
+    }
+};
+
+int main()
+{
+    ZOO zoo("Lion","Male","Albert", 10000, 23);
+    zoo.fillFile();
+    zoo.textGet();
+}
